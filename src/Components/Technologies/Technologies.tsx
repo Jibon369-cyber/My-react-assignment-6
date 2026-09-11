@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { ITechnology } from "../../Types/technology";
 import TechnologyCard from "./TechnologyCard";
 import YourStack from "./YourStack";
+import { toast } from "react-toastify";
 
 export default function Technologies () {
     const [technologies, setTechnologies] = useState<ITechnology[]>([]);
@@ -38,6 +39,28 @@ export default function Technologies () {
       }
 
       setStack((previousStack) => [...previousStack, technology]);
+
+      toast.success(`${technology.name} added to your stack.`);
+    };
+
+    const handleRemove = (id: string) => {
+        const technology = stack.find(
+            item => item.id === id
+        );
+
+        setStack(previousStack => 
+            previousStack.filter(item => item.id !== id)
+        );
+
+        if (technology) {
+            toast.info(`${technology.name} remove from your stack`);
+        }
+    }
+
+    const handleRemoveAll = () => {
+      setStack([]);
+
+      toast.info("All technologies removed from your stack.");
     };
 
     if (loading) {
@@ -80,7 +103,11 @@ export default function Technologies () {
                 />
               ))}
             </div>
-          <YourStack stack={stack} />
+          <YourStack 
+          stack={stack}
+          onRemove={handleRemove}
+          onRemoveAll={handleRemoveAll}
+          />
           </div>
 
         </div>

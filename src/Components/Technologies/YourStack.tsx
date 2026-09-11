@@ -2,9 +2,11 @@ import type { ITechnology } from "../../Types/technology";
 
 interface IYourStackProps {
   stack: ITechnology;
+  onRemove: (id: string) => void;
+  onRemoveAll: () => void;
 }
 
-export default function YourStack({stack}: IYourStackProps) {
+export default function YourStack({stack, onRemove, onRemoveAll}: IYourStackProps) {
   return (
     <aside className='self-start rounded-2xl border border-gray-200 bg-white p-5 shadow-sm'>
       <div className='flex items-center justify-between'>
@@ -29,37 +31,45 @@ export default function YourStack({stack}: IYourStackProps) {
           </p>
         </div>
       ) : (
-        /* Selected Technologies */
-        <div className='mt-5 space-y-3'>
-          {stack.map((technology) => (
-            <div
-              key={technology.id}
-              className='flex items-center gap-3 rounded-xl border border-gray-100 p-3'>
-              {/* Icon */}
-              <img
-                src={technology.icon}
-                alt={technology.name}
-                className='h-9 w-9 object-contain'
-              />
+        <>
+          <div className='mt-5 space-y-3'>
+            {stack.map((technology) => (
+              <div
+                key={technology.id}
+                className='flex items-center gap-3 rounded-xl border border-gray-100 p-3'>
+                {/* Icon */}
+                <img
+                  src={technology.icon}
+                  alt={technology.name}
+                  className='h-9 w-9 object-contain'
+                />
 
-              {/* Name + Category */}
-              <div className='min-w-0 flex-1'>
-                <h3 className='truncate text-sm font-semibold text-gray-800'>
-                  {technology.name}
-                </h3>
+                {/* Name + Category */}
+                <div className='min-w-0 flex-1'>
+                  <h3 className='truncate text-sm font-semibold text-gray-800'>
+                    {technology.name}
+                  </h3>
 
-                <p className='text-xs text-gray-400'>{technology.category}</p>
+                  <p className='text-xs text-gray-400'>{technology.category}</p>
+                </div>
+
+                {/* Remove Button */}
+                <button
+                  onClick={() => onRemove(technology.id)}
+                  className='text-sm font-bold text-gray-400 hover:text-red-500'
+                  aria-label={`Remove ${technology.name}`}>
+                  ×
+                </button>
               </div>
+            ))}
+          </div>
 
-              {/* Remove Button */}
-              <button
-                className='text-sm font-bold text-gray-400 hover:text-red-500'
-                aria-label={`Remove ${technology.name}`}>
-                ×
-              </button>
-            </div>
-          ))}
-        </div>
+          <button
+            onClick={onRemoveAll}
+            className='mt-5 w-full rounded-lg border border-red-100 px-4 py-2.5 text-sm font-semibold text-red-500 transition hover:bg-red-50'>
+            Remove All
+          </button>
+        </>
       )}
     </aside>
   );
