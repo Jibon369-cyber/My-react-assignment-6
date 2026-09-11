@@ -7,8 +7,31 @@ import { toast } from "react-toastify";
 export default function Technologies () {
     const [technologies, setTechnologies] = useState<ITechnology[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
     const [stack, setStack] = useState<ITechnology[]>([]);
 
+    const loadTechnologies = async () => {
+      try {
+        setLoading(true);
+        setError("");
+
+        const response = await fetch("/technologies.json");
+
+        if (!response.ok) {
+          throw new Error("Failed to load technologies.");
+        }
+
+        const data: Technology[] = await response.json();
+
+        setTechnologies(data);
+      } catch (error) {
+        console.error(error);
+
+        setError("Unable to load technologies. Please try again.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
     useEffect(() => {
         const loadTechnologies = async() => {
@@ -72,6 +95,31 @@ export default function Technologies () {
           </section>
         );
     }
+
+    if (error) {
+      return (
+        <section id='technologies' className='bg-gray-50 px-6 py-20'>
+          <div className='mx-auto flex max-w-xl flex-col items-center justify-center rounded-2xl border border-red-100 bg-white px-6 py-12 text-center shadow-sm'>
+            <div className='flex h-14 w-14 items-center justify-center rounded-full bg-red-50 text-2xl text-red-500'>
+              !
+            </div>
+
+            <h2 className='mt-5 text-xl font-bold text-gray-900'>
+              Something went wrong
+            </h2>
+
+            <p className='mt-2 text-sm leading-6 text-gray-500'>{error}</p>
+
+            <button
+              onClick={loadTechnologies}
+              className='mt-6 rounded-lg bg-linear-to-r from-brand-orange via-brand-pink to-brand-violet px-6 py-2.5 text-sm font-semibold text-white transition hover:opacity-90'>
+              Try Again
+            </button>
+          </div>
+        </section>
+      );
+    }
+
 
     return (
       <section id='technologies' className='bg-gray-50 px-6 py-20'>
