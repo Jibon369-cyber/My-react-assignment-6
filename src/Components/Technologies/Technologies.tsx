@@ -58,6 +58,8 @@ export default function Technologies () {
       const alreadyExists = stack.some((item) => item.id === technology.id);
 
       if (alreadyExists) {
+        toast.warning(`${technology.name} is already in your stack.`);
+
         return;
       }
 
@@ -81,6 +83,9 @@ export default function Technologies () {
     }
 
     const handleRemoveAll = () => {
+        if (stack.length === 0) {
+            return;
+        }
       setStack([]);
 
       toast.info("All technologies removed from your stack.");

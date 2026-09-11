@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import Hero from './Components/Hero/Hero'
 import Navbar from './Components/Layout/Navbar'
 import Technologies from './Components/Technologies/Technologies'
+import Footer from './Components/Layout/Footer';
 
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
         <Hero />
         <Technologies />
       </main>
+
+      <Footer />
 
       <ToastContainer
         position='top-right'
