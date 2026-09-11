@@ -2,6 +2,8 @@
 
 import Hero from './Components/Hero/Hero'
 import Navbar from './Components/Layout/Navbar'
+import Technologies from './Components/Technologies/Technologies'
+
 
 function App() {
   
@@ -12,7 +14,10 @@ function App() {
 
       <main>
         <Hero />
+        <Technologies />
       </main>
+
+      
     </>
   )
 }
