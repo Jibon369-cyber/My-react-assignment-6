@@ -9,18 +9,15 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
   };
 
-
   return (
     <header className='sticky top-0 z-50 border-b border-gray-100 bg-white'>
-      <nav className='container mx-auto flex max-w-6xl items-center justify-between px-4 py-4'>
-        
-
-        <div className='flex items-center gap-3'>
-          {/* Hamburger */}
+      <nav className='relative container mx-auto flex max-w-6xl items-center justify-between px-4 py-4'>
+        {/* Hamburger - Mobile */}
+        <div className='md:hidden'>
           <button
             type='button'
             onClick={() => setIsMobileMenuOpen((previous) => !previous)}
-            className='flex h-9 w-9 items-center justify-center rounded-lg text-gray-700 hover:bg-gray-100 md:hidden'
+            className='flex h-9 w-9 items-center justify-center rounded-lg text-gray-700 transition hover:bg-gray-100'
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}>
             {isMobileMenuOpen ? (
@@ -29,53 +26,59 @@ export default function Navbar() {
               <span className='text-xl leading-none'>☰</span>
             )}
           </button>
-
-          {/* Logo */}
-          <a href='#'>
-            <img src={logoText} alt='Dev Stack' className='h-auto w-auto' />
-          </a>
         </div>
 
-        <div className='hidden items-center gap-6 md:flex'>
+        {/* Logo */}
+        <a
+          href='#'
+          className='absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0'>
+          <img src={logoText} alt='Dev Stack' className='h-auto w-auto' />
+        </a>
+
+        {/* Desktop Navigation */}
+        <div className='hidden items-center gap-6 md:flex md:mx-auto'>
           <a href='#' className='text-xs font-bold text-brand-pink'>
             Home
           </a>
 
           <a
-            href='#'
-            className='text-xs font-bold text-gray-600 hover:text-brand-pink'>
+            href='#technologies'
+            className='text-xs font-bold text-gray-600 transition hover:text-brand-pink'>
             Technologies
           </a>
 
           <a
-            href='#'
-            className='text-xs font-bold text-gray-600 hover:text-brand-pink'>
+            href='#projects'
+            className='text-xs font-bold text-gray-600 transition hover:text-brand-pink'>
             Projects
           </a>
 
           <a
-            href='#'
-            className='text-xs font-bold text-gray-600 hover:text-brand-pink'>
+            href='#about'
+            className='text-xs font-bold text-gray-600 transition hover:text-brand-pink'>
             About
           </a>
 
           <a
-            href='#'
-            className='text-xs font-bold text-gray-600 hover:text-brand-pink'>
+            href='#contact'
+            className='text-xs font-bold text-gray-600 transition hover:text-brand-pink'>
             Contact
           </a>
         </div>
 
+        {/* Sign In + Sign Up */}
         <div className='flex items-center gap-3'>
-          <button className='hidden text-xs font-medium text-gray-600 sm:block'>
+          <button className='text-xs font-medium text-gray-600 transition hover:text-pink-600'>
             Sign In
           </button>
-          <button className='rounded-full bg-pink-700 px-4 py-2 text-xs font-medium text-white'>
+
+          <button className='cursor-pointer rounded-full bg-pink-600 px-4 py-2 text-xs font-medium text-white transition hover:bg-pink-800'>
             Sign Up
           </button>
         </div>
       </nav>
 
+      {/* Mobile Menu */}
       <MobileMenu isOpen={isMobileMenuOpen} onClose={handleCloseMenu} />
     </header>
   );

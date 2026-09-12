@@ -1,55 +1,56 @@
-const productLinks = ["Technologies", "Projects", "Resources", "Documentation"];
+import logoText from "../../assets/logo-text.png";
 
-const companyLinks = ["About Us", "Careers", "Contact", "Blog"];
+const productLinks = ["Home", "Technologies", "Products"];
 
-const legalLinks = ["Privacy Policy", "Terms of Service", "Cookie Policy"];
+const companyLinks = ["About", "Contact", "Careers"];
+
+const legalLinks = ["Privacy Policy", "Terms of Service"];
 
 export default function Footer() {
   return (
-    <footer className='border-t border-gray-200 bg-white'>
-      <div className='mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16'>
+    <footer className='border-t border-gray-100 bg-white'>
+      <div className='mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12 lg:py-14'>
         {/* Main Footer */}
-        <div className='grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]'>
+        <div className='grid grid-cols-1 gap-10 md:grid-cols-4'>
           {/* Brand */}
-          <div>
-            <a
-              href='#'
-              className='text-2xl font-bold bg-linear-to-r from-brand-orange via-brand-pink to-brand-violet bg-clip-text text-transparent'>
-              Dev Stack
+          <div className='text-center md:text-left'>
+            <a href='#' className='inline-block'>
+              <img src={logoText} alt='Dev Stack' className='h-auto w-40' />
             </a>
 
-            <p className='mt-4 max-w-sm text-sm leading-6 text-gray-500'>
-              Explore modern technologies, build your development stack, and
-              grow your skills as a developer.
+            <p className='mx-auto mt-5 max-w-xl text-sm leading-6 text-gray-500 md:mx-0'>
+              Curated tools, technologies, and resources for developers building
+              modern software.
             </p>
 
             {/* Social Links */}
-            <div className='mt-6 flex items-center gap-3'>
+            <div className='mt-6 flex items-center justify-center gap-4 md:justify-start'>
               <a
-                href='#'
-                aria-label='GitHub'
-                className='flex p-2 items-center justify-center rounded-xl border border-gray-200 text-sm font-semibold text-gray-600 transition hover:border-gray-300 hover:bg-gray-50'>
+                href='https://github.com/'
+                className='text-sm font-medium text-gray-600 transition hover:text-brand-pink'>
                 GitHub
               </a>
 
-              <a
-                href='#'
-                aria-label='LinkedIn'
-                className='flex p-2 items-center justify-center rounded-xl border border-gray-200 text-sm font-semibold text-gray-600 transition hover:border-gray-300 hover:bg-gray-50'>
-                Twiter
-              </a>
+              <span className='text-gray-400'>•</span>
 
               <a
-                href='#'
-                aria-label='Twitter'
-                className='flex p-2 items-center justify-center rounded-xl border border-gray-200 text-sm font-semibold text-gray-600 transition hover:border-gray-300 hover:bg-gray-50'>
-                    Linkedin
+                href='https://x.com/home'
+                className='text-sm font-medium text-gray-600 transition hover:text-brand-pink'>
+                Twitter
+              </a>
+
+              <span className='text-gray-400'>•</span>
+
+              <a
+                href='https://www.linkedin.com/feed/'
+                className='text-sm font-medium text-gray-600 transition hover:text-brand-pink'>
+                LinkedIn
               </a>
             </div>
           </div>
 
           {/* Product */}
-          <div>
+          <div className='hidden md:block'>
             <h3 className='text-sm font-semibold text-gray-900'>Product</h3>
 
             <ul className='mt-4 space-y-3'>
@@ -57,7 +58,7 @@ export default function Footer() {
                 <li key={link}>
                   <a
                     href='#'
-                    className='text-sm text-gray-500 transition hover:text-gray-900'>
+                    className='text-sm text-gray-500 transition hover:text-brand-pink'>
                     {link}
                   </a>
                 </li>
@@ -66,7 +67,7 @@ export default function Footer() {
           </div>
 
           {/* Company */}
-          <div>
+          <div className='hidden md:block'>
             <h3 className='text-sm font-semibold text-gray-900'>Company</h3>
 
             <ul className='mt-4 space-y-3'>
@@ -74,7 +75,7 @@ export default function Footer() {
                 <li key={link}>
                   <a
                     href='#'
-                    className='text-sm text-gray-500 transition hover:text-gray-900'>
+                    className='text-sm text-gray-500 transition hover:text-brand-pink'>
                     {link}
                   </a>
                 </li>
@@ -83,7 +84,7 @@ export default function Footer() {
           </div>
 
           {/* Legal */}
-          <div>
+          <div className='hidden md:block'>
             <h3 className='text-sm font-semibold text-gray-900'>Legal</h3>
 
             <ul className='mt-4 space-y-3'>
@@ -91,7 +92,7 @@ export default function Footer() {
                 <li key={link}>
                   <a
                     href='#'
-                    className='text-sm text-gray-500 transition hover:text-gray-900'>
+                    className='text-sm text-gray-500 transition hover:text-brand-pink'>
                     {link}
                   </a>
                 </li>
@@ -100,24 +101,28 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className='mt-10 flex flex-col gap-4 border-t border-gray-200 pt-6 sm:mt-12 sm:flex-row sm:items-center sm:justify-between'>
-          <p className='text-xs text-gray-400'>
-            © 2026 Dev Stack. All rights reserved.
-          </p>
+        {/* Bottom Footer */}
+        <div className='mt-8 border-t border-gray-100 pt-6 md:mt-12'>
+          <div className='flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left'>
+            {/* Copyright */}
+            <p className='text-sm text-gray-400'>
+              © 2026 Dev Stack. All rights reserved.
+            </p>
 
-          <div className='flex flex-wrap gap-5'>
-            <a
-              href='#'
-              className='text-xs text-gray-400 transition hover:text-gray-700'>
-              Privacy
-            </a>
+            {/* Privacy + Terms */}
+            <div className='flex items-center gap-5'>
+              <a
+                href='#'
+                className='text-sm text-gray-400 transition hover:text-gray-700'>
+                Privacy
+              </a>
 
-            <a
-              href='#'
-              className='text-xs text-gray-400 transition hover:text-gray-700'>
-              Terms
-            </a>
+              <a
+                href='#'
+                className='text-sm text-gray-400 transition hover:text-gray-700'>
+                Terms
+              </a>
+            </div>
           </div>
         </div>
       </div>
