@@ -21,7 +21,7 @@ export default function Technologies () {
           throw new Error("Failed to load technologies.");
         }
 
-        const data: Technology[] = await response.json();
+        const data: ITechnology[] = await response.json();
 
         setTechnologies(data);
       } catch (error) {
