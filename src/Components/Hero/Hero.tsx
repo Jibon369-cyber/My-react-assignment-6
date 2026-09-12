@@ -26,13 +26,13 @@ export default function Hero() {
           <div className='mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start'>
             <a
               href='#technologies'
-              className='rounded-lg bg-linear-to-r from-brand-orange via-brand-pink to-brand-violet px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90'>
+              className='rounded-lg bg-linear-to-r from-brand-orange via-brand-pink to-brand-violet px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90 cursor-pointer'>
               Explore Technologies
             </a>
 
             <a
               href='#about'
-              className='rounded-lg border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50'>
+              className='rounded-lg border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 cursor-pointer'>
               Learn More
             </a>
           </div>

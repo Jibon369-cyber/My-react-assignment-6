@@ -60,8 +60,8 @@ export default function TechnologyCard({
         disabled={isAdded}
         className={`mt-5 w-full rounded-lg px-4 py-2.5 text-sm font-semibold transition ${
           isAdded
-            ? "cursor-not-allowed bg-gray-100 text-gray-400"
-            : "bg-linear-to-r from-brand-orange via-brand-pink to-brand-violet text-white hover:opacity-90"
+            ? "bg-gray-100 text-gray-400 cursor-pointer"
+            : "bg-linear-to-r from-brand-orange via-brand-pink to-brand-violet text-white hover:opacity-90 cursor-pointer"
         }`}>
         {isAdded ? "✓ Added to Stack" : "Add to Stack"}
       </button>

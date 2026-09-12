@@ -68,7 +68,7 @@ export default function Navbar() {
 
         {/* Sign In + Sign Up */}
         <div className='flex items-center gap-3'>
-          <button className='text-xs font-medium text-gray-600 transition hover:text-pink-600'>
+          <button className='text-xs font-medium text-gray-600 transition hover:text-pink-600 cursor-pointer'>
             Sign In
           </button>
 
