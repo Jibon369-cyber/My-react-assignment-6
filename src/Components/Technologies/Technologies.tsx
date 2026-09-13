@@ -3,7 +3,7 @@ import type { ITechnology } from "../../Types/technology";
 import TechnologyCard from "./TechnologyCard";
 import YourStack from "./YourStack";
 import { toast } from "react-toastify";
-import technologiesData from "../../Data/tachnologies.json";
+
 
 export default function Technologies () {
     const [technologies, setTechnologies] = useState<ITechnology[]>([]);
@@ -15,7 +15,18 @@ export default function Technologies () {
       try {
         setLoading(true);
         setError("");
-        setTechnologies(technologiesData as ITechnology[]);
+
+        const response = await fetch("/technologies.json");
+
+        if (!response.ok) {
+          throw new Error("Failed to load technologies");
+        }
+
+        const data: ITechnology[] = await response.json();
+
+        console.log("Technologies:", data);
+
+        setTechnologies(data);
       } catch (error) {
         console.error(error);
         setError("Unable to load technologies. Please try again.");
